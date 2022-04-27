@@ -1,6 +1,8 @@
 import java.util.Arrays;
 
-//The class responsible for working with data and storing it
+/**
+ * The class responsible for working with data and storing it
+ */
 public class Data
 {
     private final static int ARRAY_SIZE = 30000;

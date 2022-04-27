@@ -1,3 +1,6 @@
+/**
+ * The abstract class responsible for unary commands
+ */
 public abstract class UnaryCommand implements Command
 {
     private char id;

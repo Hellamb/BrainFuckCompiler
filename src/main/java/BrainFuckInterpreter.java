@@ -1,3 +1,6 @@
+/**
+ * The class responsible for interpreting program string into output string
+ */
 public class BrainFuckInterpreter
 {
     private Analyzer analyzer;

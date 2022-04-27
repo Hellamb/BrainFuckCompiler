@@ -1,7 +1,7 @@
 import java.util.List;
 
 /**
- *
+ * The class responsible for execute commands on data
  */
 public class Runner {
 

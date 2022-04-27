@@ -3,6 +3,9 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * The class responsible for parsing program string into commands list
+ */
 public class Parser {
     CommandDictionary dictionary;
 

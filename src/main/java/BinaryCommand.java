@@ -1,6 +1,8 @@
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * The abstract class responsible for binary commands
+ */
 public abstract class BinaryCommand implements Command
 {
     private char id_start;

@@ -1,6 +1,9 @@
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The class responsible for analyzing input program
+ */
 public class Analyzer {
     CommandDictionary dictionary;
 
@@ -15,6 +18,7 @@ public class Analyzer {
      * @return true if all OK, false if something wrong
      */
     public boolean check(String program) {
+        if(program == null) return false;
         //Stores the number of non-closed binary commands
         Map<Character, Integer> binaryIdentifiersCounter = new HashMap<>();
 
