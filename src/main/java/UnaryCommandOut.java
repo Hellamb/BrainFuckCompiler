@@ -1,15 +1,12 @@
-public class UnaryCommandOut extends UnaryCommand
-{
+public class UnaryCommandOut extends UnaryCommand {
 
-    public UnaryCommandOut(char id)
-    {
+    public UnaryCommandOut(char id) {
         super(id);
     }
 
     //Unary command that puts a value on the output
     @Override
-    public void execute(Data data)
-    {
+    public void execute(Data data) {
         data.addOutput(data.getArr()[data.getIndex()]);
     }
 

@@ -5,19 +5,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RunnerTest
-{
+class RunnerTest {
 
+    /**
+     * Test unary commands
+     */
     @Test
-    //Test unary commands
-    void run1()
-    {
+    void run1() {
         Runner runner = new Runner();
         CommandDictionary dictionary = new CommandDictionary();
         List<Command> commandList = new LinkedList<>();
 
-        for(int i = 0; i < 60; i++)
-        {
+        for (int i = 0; i < 60; i++) {
             commandList.add(dictionary.get('+'));
         }
         commandList.add(dictionary.get('-'));
@@ -28,22 +27,21 @@ class RunnerTest
         assertEquals(";", runner.run(commandList));
     }
 
+    /**
+     * Test unary and binary commands with correct result
+     */
     @Test
-    //Test unary and binary commands with correct result
-    void run2()
-    {
+    void run2() {
         Runner runner = new Runner();
         CommandDictionary dictionary = new CommandDictionary();
         List<Command> commandList = new LinkedList<>();
         commandList.add(dictionary.get('>'));
-        for(int i = 0; i < 9; i++)
-        {
+        for (int i = 0; i < 9; i++) {
             commandList.add(dictionary.get('+'));
         }
-        BinaryCommand binaryCommand = (BinaryCommand)dictionary.get('[');
+        BinaryCommand binaryCommand = (BinaryCommand) dictionary.get('[');
         binaryCommand.addCommand(dictionary.get('<'));
-        for(int i = 0; i < 8; i++)
-        {
+        for (int i = 0; i < 8; i++) {
             binaryCommand.addCommand(dictionary.get('+'));
         }
         binaryCommand.addCommand(dictionary.get('>'));
@@ -55,27 +53,29 @@ class RunnerTest
         assertEquals("H", runner.run(commandList));
     }
 
+    /**
+     * Test null in Commands list
+     */
     @Test
-    //Test null in Commands list
-    void run3()
-    {
+    void run3() {
         Runner runner = new Runner();
         CommandDictionary dictionary = new CommandDictionary();
         List<Command> commandList = new LinkedList<>();
         commandList.add(null);
 
-        assertThrows(NullPointerException.class, ()->runner.run(commandList));
+        assertThrows(NullPointerException.class, () -> runner.run(commandList));
     }
 
+    /**
+     * Test null in Data
+     */
     @Test
-    //Test null in Data
-    void run4()
-    {
+    void run4() {
         Runner runner = new Runner();
         CommandDictionary dictionary = new CommandDictionary();
         List<Command> commandList = new LinkedList<>();
         commandList.add(dictionary.get('<'));
 
-        assertThrows(NullPointerException.class, ()->runner.run(commandList, null));
+        assertThrows(NullPointerException.class, () -> runner.run(commandList, null));
     }
 }

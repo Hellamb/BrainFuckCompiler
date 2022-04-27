@@ -1,15 +1,12 @@
-public class UnaryCommandRight extends  UnaryCommand
-{
-    public UnaryCommandRight(char id)
-    {
+public class UnaryCommandRight extends UnaryCommand {
+    public UnaryCommandRight(char id) {
         super(id);
     }
 
     //Unary command that move index righter
     @Override
-    public void execute(Data data)
-    {
-        data.setIndex(data.getIndex()+(char)1);
+    public void execute(Data data) {
+        data.setIndex(data.getIndex() + (char) 1);
     }
 
     @Override

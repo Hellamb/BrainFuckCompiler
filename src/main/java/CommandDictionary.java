@@ -31,6 +31,7 @@ public class CommandDictionary {
 
     /**
      * Returns an array with the opening and closing identifiers of the binary command
+     *
      * @param c command-identifier
      * @return array[0] - opening identifier, array[1] - closing identifier
      */
@@ -49,6 +50,7 @@ public class CommandDictionary {
 
     /**
      * Gives Command object, with given command-identifier if exist
+     *
      * @param c command-identifier
      * @return new Command object, with given command-identifier
      */

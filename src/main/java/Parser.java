@@ -15,6 +15,7 @@ public class Parser {
 
     /**
      * Parses program text into command list
+     *
      * @param program input program string
      * @return List of commands
      */

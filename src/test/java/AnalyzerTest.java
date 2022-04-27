@@ -4,10 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AnalyzerTest {
 
+    /**
+     * Test all unary commands
+     */
     @Test
-    //Test all unary commands
-    void check1()
-    {
+    void check1() {
         CommandDictionary dictionary = new CommandDictionary();
         Analyzer analyzer = new Analyzer(dictionary);
         String input = "+-><.";
@@ -15,10 +16,11 @@ class AnalyzerTest {
         assertTrue(analyzer.check(input));
     }
 
+    /**
+     * Test binary commands, with correct opens and closes
+     */
     @Test
-    //Test binary commands, with correct opens and closes
-    void check2()
-    {
+    void check2() {
         CommandDictionary dictionary = new CommandDictionary();
         Analyzer analyzer = new Analyzer(dictionary);
         String input = "[][[][]]";
@@ -26,10 +28,11 @@ class AnalyzerTest {
         assertTrue(analyzer.check(input));
     }
 
+    /**
+     * Test binary commands, with wrong opens and closes
+     */
     @Test
-   //Test binary commands, with wrong opens and closes
-    void check3()
-    {
+    void check3() {
         CommandDictionary dictionary = new CommandDictionary();
         Analyzer analyzer = new Analyzer(dictionary);
         String input = "][";
@@ -37,10 +40,11 @@ class AnalyzerTest {
         assertFalse(analyzer.check(input));
     }
 
+    /**
+     * Test binary commands, with wrong opens and closes
+     */
     @Test
-    //Test commands, with wrong identifiers
-    void check4()
-    {
+    void check4() {
         CommandDictionary dictionary = new CommandDictionary();
         Analyzer analyzer = new Analyzer(dictionary);
         String input = ">&:^s*&#%.";
@@ -48,10 +52,11 @@ class AnalyzerTest {
         assertFalse(analyzer.check(input));
     }
 
+    /**
+     * Test "Hello world!"
+     */
     @Test
-    //Test "Hello world!"
-    void check5()
-    {
+    void check5() {
         CommandDictionary dictionary = new CommandDictionary();
         Analyzer analyzer = new Analyzer(dictionary);
         String input = ">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.>>>++++++++[<++++>-]" +
@@ -60,10 +65,11 @@ class AnalyzerTest {
         assertTrue(analyzer.check(input));
     }
 
+    /**
+     * Test empty string
+     */
     @Test
-    //Test empty string
-    void check6()
-    {
+    void check6() {
         CommandDictionary dictionary = new CommandDictionary();
         Analyzer analyzer = new Analyzer(dictionary);
         String input = "";
@@ -71,10 +77,11 @@ class AnalyzerTest {
         assertTrue(analyzer.check(input));
     }
 
+    /**
+     * Test null
+     */
     @Test
-    //Test null
-    void check7()
-    {
+    void check7() {
         CommandDictionary dictionary = new CommandDictionary();
         Analyzer analyzer = new Analyzer(dictionary);
         String input = null;

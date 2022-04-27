@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.List;
+
 /**
  * The abstract class responsible for binary commands
  */

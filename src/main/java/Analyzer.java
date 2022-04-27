@@ -18,7 +18,7 @@ public class Analyzer {
      * @return true if all OK, false if something wrong
      */
     public boolean check(String program) {
-        if(program == null) return false;
+        if (program == null) return false;
         //Stores the number of non-closed binary commands
         Map<Character, Integer> binaryIdentifiersCounter = new HashMap<>();
 

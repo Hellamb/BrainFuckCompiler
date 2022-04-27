@@ -7,10 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ParserTest {
 
+    /**
+     * test unary commands: '>', '<', '+', '-', '.'
+     */
     @Test
-    //test unary commands
-    void parse()
-    {
+    void parse() {
         CommandDictionary dictionary = new CommandDictionary();
         Parser parser = new Parser(dictionary);
 

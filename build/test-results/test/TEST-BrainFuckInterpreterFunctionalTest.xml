@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BrainFuckInterpreterFunctionalTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-04-27T19:22:11" hostname="LAPTOP-6SI5QUTS" time="0.024">
+  <properties/>
+  <testcase name="interpret1()" classname="BrainFuckInterpreterFunctionalTest" time="0.02"/>
+  <testcase name="interpret2()" classname="BrainFuckInterpreterFunctionalTest" time="0.001"/>
+  <testcase name="interpret3()" classname="BrainFuckInterpreterFunctionalTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -4,10 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BrainFuckInterpreterFunctionalTest {
 
+    /**
+     * Test "Hello World!"| Unary and binary operators
+     */
     @Test
-    //Test "Hello World!"| Unary and binary operators
-    void interpret1()
-    {
+    void interpret1() {
         String inputProgram = ">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.>>>++++++++[<++++>-]" +
                 "<.>>>++++++++++[<+++++++++>-]<---.<<<<.+++.------.--------.>>+.";
 
@@ -16,19 +17,19 @@ class BrainFuckInterpreterFunctionalTest {
         Parser parser = new Parser(dictionary);
         Runner runner = new Runner();
 
-        BrainFuckInterpreter bfi = new BrainFuckInterpreter(analyzer,parser,runner);
-        try{
+        BrainFuckInterpreter bfi = new BrainFuckInterpreter(analyzer, parser, runner);
+        try {
             assertEquals("Hello World!", bfi.interpret(inputProgram));
-        } catch (Exception err)
-        {
+        } catch (Exception err) {
             System.err.println(err.getMessage());
         }
     }
 
+    /**
+     * Test empty string
+     */
     @Test
-    //Test empty string
-    void interpret2()
-    {
+    void interpret2() {
         String inputProgram = "";
 
         CommandDictionary dictionary = new CommandDictionary();
@@ -36,19 +37,19 @@ class BrainFuckInterpreterFunctionalTest {
         Parser parser = new Parser(dictionary);
         Runner runner = new Runner();
 
-        BrainFuckInterpreter bfi = new BrainFuckInterpreter(analyzer,parser,runner);
-        try{
+        BrainFuckInterpreter bfi = new BrainFuckInterpreter(analyzer, parser, runner);
+        try {
             assertEquals("", bfi.interpret(inputProgram));
-        } catch (Exception err)
-        {
+        } catch (Exception err) {
             System.err.println(err.getMessage());
         }
     }
 
+    /**
+     * Test commands, with wrong identifiers
+     */
     @Test
-    //Test commands, with wrong identifiers
-    void interpret3()
-    {
+    void interpret3() {
         String inputProgram = ">++++<.%[]";
 
         CommandDictionary dictionary = new CommandDictionary();
@@ -56,11 +57,10 @@ class BrainFuckInterpreterFunctionalTest {
         Parser parser = new Parser(dictionary);
         Runner runner = new Runner();
 
-        BrainFuckInterpreter bfi = new BrainFuckInterpreter(analyzer,parser,runner);
-        try{
-            assertThrows(IllegalSyntaxException.class,() -> bfi.interpret(inputProgram));
-        } catch (Exception err)
-        {
+        BrainFuckInterpreter bfi = new BrainFuckInterpreter(analyzer, parser, runner);
+        try {
+            assertThrows(IllegalSyntaxException.class, () -> bfi.interpret(inputProgram));
+        } catch (Exception err) {
             System.err.println(err.getMessage());
         }
     }

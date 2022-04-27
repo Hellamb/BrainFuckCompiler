@@ -7,8 +7,9 @@ public class Runner {
 
     /**
      * Executes the given list of commands on the data
+     *
      * @param commandList List of commands to be executed on the data
-     * @param data object that stores data
+     * @param data        object that stores data
      * @return result string
      */
     public String run(List<Command> commandList, Data data) {
@@ -18,6 +19,7 @@ public class Runner {
 
     /**
      * Executes the given list of commands on the empty data
+     *
      * @param commandList List of commands to be executed on the empty data
      * @return result string
      */

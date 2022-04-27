@@ -1,14 +1,12 @@
 /**
  * The class responsible for interpreting program string into output string
  */
-public class BrainFuckInterpreter
-{
+public class BrainFuckInterpreter {
     private Analyzer analyzer;
     private Parser parser;
     private Runner runner;
 
-    public BrainFuckInterpreter(Analyzer analyzer, Parser parser, Runner runner)
-    {
+    public BrainFuckInterpreter(Analyzer analyzer, Parser parser, Runner runner) {
         this.analyzer = analyzer;
         this.parser = parser;
         this.runner = runner;
@@ -16,17 +14,15 @@ public class BrainFuckInterpreter
 
     /**
      * Interprets the input program string
+     *
      * @param program input program string
      * @return output result string
      * @throws IllegalSyntaxException if input program is wrong
      */
-    public String interpret(String program) throws IllegalSyntaxException
-    {
-        if(analyzer.check(program))
-        {
+    public String interpret(String program) throws IllegalSyntaxException {
+        if (analyzer.check(program)) {
             return runner.run(parser.parse(program));
-        }else
-        {
+        } else {
             throw new IllegalSyntaxException();
         }
     }

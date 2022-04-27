@@ -1,5 +1,4 @@
-public class IllegalSyntaxException  extends Exception
-{
+public class IllegalSyntaxException extends Exception {
     public IllegalSyntaxException() {
     }
 
