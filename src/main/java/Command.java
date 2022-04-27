@@ -1,4 +1,6 @@
-@FunctionalInterface
-public interface Command {
-    void execute(Node node);
+public interface Command
+{
+    void execute(Data data);
+
+    Command create();
 }

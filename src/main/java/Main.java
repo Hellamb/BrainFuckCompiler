@@ -1,20 +1,23 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class Main {
-    public static void main(String[] arguments){
+public class Main
+{
+    public static void main(String[] args)
+    {
+        String inputProgram = ">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.>>>++++++++[<++++>-]" +
+                "<.>>>++++++++++[<+++++++++>-]<---.<<<<.+++.------.--------.>>+.>++++++++++.";
 
-        Map<Character, Command> commands = new HashMap<>();
-        commands.put('>',node -> node.setIndex(node.getIndex()+1));
-        commands.put('<',node -> node.setIndex(node.getIndex()-1));
-        commands.put('+',node -> node.getArr()[node.getIndex()] +=1);
-        commands.put('-',node -> node.getArr()[node.getIndex()] -=1);
-        commands.put('.',node -> System.out.println(node.getArr()[node.getIndex()]));
+        CommandDictionary dictionary = new CommandDictionary();
+        Analyzer analyzer = new Analyzer(dictionary);
+        Parser parser = new Parser(dictionary);
+        Runner runner = new Runner();
 
-        Analyzer analyzer = new SyntaxAnalyzer(commands);
-        BrainFuckCompiler bfc = new BrainFuckCompiler(analyzer);
-
-        bfc.compile(".+++.>.++.");
-
+        BrainFuckInterpreter bfi = new BrainFuckInterpreter(analyzer,parser,runner);
+        try{
+            System.out.println(bfi.interpret(inputProgram));
+        } catch (Exception err)
+        {
+            System.err.println(err.getMessage());
+        }
     }
 }
