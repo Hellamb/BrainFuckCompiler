@@ -5,10 +5,11 @@ public class BinaryCommandWhile extends BinaryCommand {
 
     @Override
     public void execute(Data data) {
-        Runner runner = new Runner();
+//        Runner runner = new Runner();
         int index = data.getIndex();
         while (data.getArr()[index] != 0) {
-            runner.run(super.innerCommandList, data);
+//            runner.run(super.innerCommandList, data);
+            super.innerCommandList.forEach(command -> command.execute(data));
         }
     }
 
