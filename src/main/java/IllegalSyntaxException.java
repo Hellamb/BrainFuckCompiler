@@ -6,3 +6,4 @@ public class IllegalSyntaxException extends Exception {
         super(message);
     }
 }
+

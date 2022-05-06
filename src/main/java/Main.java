@@ -1,20 +1,18 @@
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-        String inputProgram = ">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.>>>++++++++[<++++>-]" +
-                "<.>>>++++++++++[<+++++++++>-]<---.<<<<.+++.------.--------.>>+.>++++++++++.";
+
+        String inputProgram = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
 
         CommandDictionary dictionary = new CommandDictionary();
-        Analyzer analyzer = new Analyzer(dictionary);
-        Parser parser = new Parser(dictionary);
-        Runner runner = new Runner();
+        Runner runner = new Runner(dictionary);
 
-        BrainFuckInterpreter bfi = new BrainFuckInterpreter(analyzer, parser, runner);
-        try {
-            System.out.println(bfi.interpret(inputProgram));
-        } catch (Exception err) {
+        try
+        {
+            System.out.println(runner.run(inputProgram));
+        }catch (IllegalSyntaxException err)
+        {
             System.err.println(err.getMessage());
         }
+
     }
 }

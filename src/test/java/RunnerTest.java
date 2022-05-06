@@ -1,81 +1,62 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RunnerTest {
 
     /**
-     * Test unary commands
+     * Test "Hello World!" | all commands and nested loops
      */
     @Test
-    void run1() {
-        Runner runner = new Runner();
+    void run1()
+    {
+        String inputProgram = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++";
+
         CommandDictionary dictionary = new CommandDictionary();
-        List<Command> commandList = new LinkedList<>();
+        Runner runner = new Runner(dictionary);
 
-        for (int i = 0; i < 60; i++) {
-            commandList.add(dictionary.get('+'));
+        try
+        {
+            assertEquals("Hello World!",runner.run(inputProgram));
+        }catch (IllegalSyntaxException err)
+        {
+            System.err.println(err.getMessage());
         }
-        commandList.add(dictionary.get('-'));
-        commandList.add(dictionary.get('>'));
-        commandList.add(dictionary.get('<'));
-        commandList.add(dictionary.get('.'));
-
-        assertEquals(";", runner.run(commandList));
     }
 
     /**
-     * Test unary and binary commands with correct result
+     * Test null
      */
     @Test
-    void run2() {
-        Runner runner = new Runner();
-        CommandDictionary dictionary = new CommandDictionary();
-        List<Command> commandList = new LinkedList<>();
-        commandList.add(dictionary.get('>'));
-        for (int i = 0; i < 9; i++) {
-            commandList.add(dictionary.get('+'));
-        }
-        BinaryCommand binaryCommand = (BinaryCommand) dictionary.get('[');
-        binaryCommand.addCommand(dictionary.get('<'));
-        for (int i = 0; i < 8; i++) {
-            binaryCommand.addCommand(dictionary.get('+'));
-        }
-        binaryCommand.addCommand(dictionary.get('>'));
-        binaryCommand.addCommand(dictionary.get('-'));
-        commandList.add(binaryCommand);
-        commandList.add(dictionary.get('<'));
-        commandList.add(dictionary.get('.'));
+    void run2()
+    {
+        String inputProgram = null;
 
-        assertEquals("H", runner.run(commandList));
+        CommandDictionary dictionary = new CommandDictionary();
+        Runner runner = new Runner(dictionary);
+
+        try
+        {
+            assertEquals("",runner.run(inputProgram));
+        }catch (IllegalSyntaxException err)
+        {
+            System.err.println(err.getMessage());
+        }
     }
 
     /**
-     * Test null in Commands list
+     * Test not correct input
      */
     @Test
-    void run3() {
-        Runner runner = new Runner();
+    void run3()
+    {
+        String inputProgram = "null";
+
         CommandDictionary dictionary = new CommandDictionary();
-        List<Command> commandList = new LinkedList<>();
-        commandList.add(null);
+        Runner runner = new Runner(dictionary);
 
-        assertThrows(NullPointerException.class, () -> runner.run(commandList));
-    }
+        assertThrows(IllegalSyntaxException.class, () -> runner.run(inputProgram));
 
-    /**
-     * Test null in Data
-     */
-    @Test
-    void run4() {
-        Runner runner = new Runner();
-        CommandDictionary dictionary = new CommandDictionary();
-        List<Command> commandList = new LinkedList<>();
-        commandList.add(dictionary.get('<'));
-
-        assertThrows(NullPointerException.class, () -> runner.run(commandList, null));
     }
 }

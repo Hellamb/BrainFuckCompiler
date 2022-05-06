@@ -1,30 +1,31 @@
-import java.util.List;
-
 /**
  * The class responsible for execute commands on data
  */
 public class Runner {
+    CommandDictionary dictionary;
 
-    /**
-     * Executes the given list of commands on the data
-     *
-     * @param commandList List of commands to be executed on the data
-     * @param data        object that stores data
-     * @return result string
-     */
-    public String run(List<Command> commandList, Data data) {
-        commandList.forEach(command -> command.execute(data));
-        return data.getOutput();
+    public Runner(CommandDictionary dictionary) {
+        this.dictionary = dictionary;
     }
 
     /**
-     * Executes the given list of commands on the empty data
+     * Executes the given program on the empty data
      *
-     * @param commandList List of commands to be executed on the empty data
+     * @param program program string
      * @return result string
      */
-    public String run(List<Command> commandList) {
+    public String run(String program) throws IllegalSyntaxException {
+        if(program == null) return "";
+
         Data data = new Data();
-        return run(commandList, data);
+        int pointer = 0;
+
+        while (pointer != program.length()) {
+            Command command = dictionary.getCommand(program.charAt(pointer));
+            if(command == null) throw new IllegalSyntaxException("Command '"+program.charAt(pointer)+"' not found");
+            pointer = command.execute(data, program, pointer);
+        }
+
+        return data.getOutput();
     }
 }
